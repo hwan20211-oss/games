@@ -14,6 +14,11 @@ const ObjectMover = dynamic(() => import('@/components/ObjectMover'), {
   loading: () => <div className="game-placeholder">객체 인식 모델을 불러오는 중...</div>
 });
 
+const HandPose = dynamic(() => import('@/components/HandPose'), {
+  ssr: false,
+  loading: () => <div className="game-placeholder">핸드포즈 모델을 불러오는 중...</div>
+});
+
 const TABS = [
   { id: 'rps', label: '🎮 가위바위보' },
   { id: 'move', label: '📦 물건 이동' },
@@ -47,7 +52,8 @@ export default function Home() {
           <div className="tab-content">
             {activeTab === 'rps' && <RpsGame />}
             {activeTab === 'move' && <ObjectMover />}
-            {activeTab !== 'rps' && activeTab !== 'move' && (
+            {activeTab === 'pose' && <HandPose />}
+            {activeTab !== 'rps' && activeTab !== 'move' && activeTab !== 'pose' && (
               <div key={activeTab} className="game-placeholder">
                 여기에 <strong>{activeLabel}</strong>이 들어갈 예정입니다
               </div>
