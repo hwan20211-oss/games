@@ -19,5 +19,10 @@
   "devDependencies": {
     "eslint": "^9",
     "eslint-config-next": "16.2.2"
+  },
+  "overrides": {
+    "@teachablemachine/image": {
+      "@tensorflow/tfjs": "$@tensorflow/tfjs"
+    }
   }
 }
